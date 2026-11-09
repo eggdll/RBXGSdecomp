@@ -4,6 +4,16 @@
 #include "v8datamodel/DataModel.h"
 #include <boost/thread/xtime.hpp>
 
+// cmake changes begin
+#ifdef TIME_UTC
+#undef TIME_UTC
+#endif
+
+#if BOOST_VERSION > 103401
+#define TIME_UTC TIME_UTC_
+#endif
+// cmake changes end
+
 namespace RBX
 {
 	const char* const sRunService = "RunService";

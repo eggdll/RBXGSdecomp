@@ -8,7 +8,9 @@
 
 namespace RBX
 {
-	struct myLess : public std::binary_function<G3D::Vector3, G3D::Vector3, bool>
+	// cmake changes begin
+	struct myLess
+	// cmake changes end
 	{
 		bool operator()(const G3D::Vector3& a, const G3D::Vector3& b) const
 		{

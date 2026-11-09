@@ -232,7 +232,9 @@ void Body::setParent(Body* newParent)
 
 Body* Body::getWorldBody()
 {
-	static Body b = Body();
+	// cmake changes begin
+	static Body b;
+	// cmake changes end
 	return &b;
 }
 

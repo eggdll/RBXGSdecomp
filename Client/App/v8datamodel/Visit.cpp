@@ -4,6 +4,18 @@
 #include <G3D/format.h>
 #include <boost/thread.hpp>
 
+// cmake changes begin
+#ifdef TIME_UTC
+#undef TIME_UTC
+#endif
+
+#if BOOST_VERSION > 103401
+#define TIME_UTC TIME_UTC_
+#endif
+
+#include <boost/thread/xtime.hpp>
+// cmake changes end
+
 static RBX::Reflection::BoundFuncDesc<RBX::Visit, void(std::string), 1> UploadUrlFunction(&RBX::Visit::setUploadUrl, "SetUploadUrl", "url", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 static RBX::Reflection::BoundFuncDesc<RBX::Visit, std::string(void), 0> getUploadUrl(&RBX::Visit::getUploadUrl, "GetUploadUrl", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 static RBX::Reflection::BoundFuncDesc<RBX::Visit, void(std::string, int), 2> desc_setPing(&RBX::Visit::setPing, "SetPing", "pingUrl", "interval", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);

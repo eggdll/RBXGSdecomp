@@ -2,6 +2,15 @@
 #include "v8tree/Instance.h"
 #include "v8tree/Service.h"
 
+// cmake changes begin
+#define ITERATOR_TRAITS \
+	using iterator_category = std::output_iterator_tag; 	\
+    using value_type        = void;							\
+    using difference_type   = std::ptrdiff_t;				\
+    using pointer           = void;							\
+    using reference         = void;							\
+// cmake changes end
+
 namespace RBX
 {
 	class SelectionChanged
@@ -35,12 +44,22 @@ namespace RBX
 					  public Service,
 					  public Listener<Instance, AncestorChanged>
 	{
-		class AddIterator : public std::_Outit // base class has zero typedefs...
+		// cmake changes begin
+		friend class BoxSelectCommand;
+		// cmake changes end
+
+		// cmake changes begin
+		class AddIterator
+		// cmake changes end
 		{
 		private:
 			Selection* selection;
 
 		public:
+			// cmake changes begin
+			ITERATOR_TRAITS
+			// cmake changes end
+
 			AddIterator(Selection* selection)
 				: selection(selection)
 			{
@@ -56,12 +75,18 @@ namespace RBX
 			}
 		};
 
-		class RemoveIterator : public std::_Outit
+		// cmake changes begin
+		class RemoveIterator
+		// cmake changes end
 		{
 		private:
 			Selection* selection;
 
 		public:
+			// cmake changes begin
+			ITERATOR_TRAITS
+			// cmake changes end
+
 			RemoveIterator(Selection* selection)
 				: selection(selection)
 			{
@@ -77,12 +102,18 @@ namespace RBX
 			}
 		};
 
-		class ToggleIterator : public std::_Outit
+		// cmake changes begin
+		class ToggleIterator
+		// cmake changes end
 		{
 		private:
 			Selection* selection;
 
 		public:
+			// cmake changes begin
+			ITERATOR_TRAITS
+			// cmake changes end
+
 			ToggleIterator(Selection* selection)
 				: selection(selection)
 			{

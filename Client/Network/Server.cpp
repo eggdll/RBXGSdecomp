@@ -8,6 +8,18 @@
 #include "util/standardout.h"
 #include <boost/thread.hpp>
 
+// cmake changes begin
+#ifdef TIME_UTC
+#undef TIME_UTC
+#endif
+
+#if BOOST_VERSION > 103401
+#define TIME_UTC TIME_UTC_
+#endif
+
+#include <boost/thread/xtime.hpp>
+// cmake changes end
+
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(int, int), 2> server_startFunction(&RBX::Network::Server::start, "Start", "port", "threadSleepTime", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, void(int), 1>  f_disconnect(&RBX::Network::Server::stop, "Stop", "blockDuration", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);
 static RBX::Reflection::BoundFuncDesc<RBX::Network::Server, int(void), 0> f_GetClientCount(&RBX::Network::Server::getClientCount, "GetClientCount", RBX::Reflection::FunctionDescriptor::NeedTrustedCaller);

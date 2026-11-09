@@ -158,7 +158,9 @@ namespace RBX
 
 	void Lighting::setMinutesAfterMidnight(double value)
 	{
-		setTime(boost::posix_time::seconds(value * 60.0));
+		// cmake changes begin
+		setTime(boost::posix_time::seconds(static_cast<int>(value * 60.0)));
+		// cmake changes end
 	}
 
 	void Lighting::onChildAdded(Instance* child)

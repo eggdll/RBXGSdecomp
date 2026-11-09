@@ -20,12 +20,13 @@ namespace RBX
 		{
 		}
 	public:
-		// this allows functions to easily check if object is NULL
-		// VERY hacky...
-		operator typename boost::shared_ptr<T>::unspecified_bool_type() const
+		// cmake changes begin
+		operator bool() const
 		{
-			return object;
+			return object.get() != NULL;
 		}
+		// cmake changes end
+
 		const T& operator*() const
 		{
 			return *object.get();
