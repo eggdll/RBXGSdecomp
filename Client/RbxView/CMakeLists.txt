@@ -16,6 +16,6 @@ add_library(RbxView ${RBXVIEW_SOURCES})
 target_include_directories(RbxView
     PUBLIC
         "include"
-        "${CMAKE_SOURCE_DIR}/App/include"
+        "${CMAKE_CURRENT_SOURCE_DIR}/App/include"
 )
 target_link_libraries(RbxView PUBLIC Boost GLG3D RenderLib RbxGraphics RbxViewBase AppDraw)
