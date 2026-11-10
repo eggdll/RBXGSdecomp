@@ -11,8 +11,8 @@ add_library(AppDraw STATIC ${APP_DRAW_SOURCES})
 
 target_include_directories(AppDraw PUBLIC
     "include"
-    "${CMAKE_SOURCE_DIR}/App/include"
-    "${CMAKE_SOURCE_DIR}/Rendering/RenderLib/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/App/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Rendering/RenderLib/include"
 )
 
 target_link_libraries(AppDraw PUBLIC Boost RbxGraphics G3D GLG3D SDL)

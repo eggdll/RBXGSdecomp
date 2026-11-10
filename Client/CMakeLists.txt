@@ -9,7 +9,7 @@ add_compile_definitions(BOOST_SIGNALS_NO_DEPRECATION_WARNING)
 include("cmake/boost.cmake")
 include("cmake/SDL.cmake")
 
-set(G3D_BASE_DIR ${CMAKE_SOURCE_DIR}/Rendering/g3d)
+set(G3D_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Rendering/g3d)
 
 include("cmake/G3D.cmake")
 include("cmake/GLG3D.cmake")
